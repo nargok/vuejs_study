@@ -15,21 +15,33 @@
   
   <script>
     var data = {
-      message: 'Hello vue!'
+      message: 'Hello vue!',
+      items: ["one", 'two', 'three', 'four', 'five']
     };
 
     var app = new Vue({
       el: '#app',
       data: data,
       render: (element) => {
-        return element("p",
-          {'style': 'font-size:20pt; color:red;'},
-          data.message);
+        var p = element("p",
+        {style: 'font-size:20pt; color:red;'},
+        data.message);
+        var li = data.items.map(item => element('li', item));
+        var ol = element("ol", li);
+        var div = element("div", [p, li]);
+        return div;
       }
     })
 
     function doAction() {
+      var newdata = [
+        'いち', 'に', 'さん', 'よん', 'ご'
+      ]
       data.message = "You clicked!";
+      data.items[0] = 'ゼロ';
+      for (n in data.items) {
+        data.items[n] = newdata[n]
+      }
     }
   </script>
 </body>
