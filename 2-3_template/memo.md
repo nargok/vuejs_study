@@ -12,6 +12,11 @@ v-bind: 属性名 = "設定する値"
 <p v-bind:style="style">{{ message }}</p>
 ```
 
+これでもOK(v-bindは省略できる)
+```html
+<p :style="style">{{ message }}</p>
+```
+
 ```javascript
 var data = {
   message: Hello, Vue.js,
