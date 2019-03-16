@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<h1>Vue.js</h1>
+<div id="app">
+    <div><hello /></div>
+    <div><hello /></div>
+    <div><hello /></div>
+</div>
+
+<script>
+    const app = new Vue({
+      el: '#app',
+      components: {
+        hello: {
+          data: function () {
+            return {
+              counter: 0,
+            };
+          },
+          template: '<p v-on:click="counter++;" class="hello">clicked: {{counter}}</p>'
+        }
+      }
+    });
+</script>
+</body>
+</html>
