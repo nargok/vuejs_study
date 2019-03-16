@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<style>
+    table tr th {
+        font-size: 16pt;
+        color: white;
+        background-color: blue;
+        padding: 5px 15px;
+    }
+    table tr td {
+        font-size: 16pt;
+        color: gray;
+        border: 1px solid gray;
+    }
+</style>
+<h1>Vue.js</h1>
+<div id="app">
+    <p>※データをテーブル表示する</p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>mail</th>
+            <th>tel</th>
+        </tr>
+        <tr v-for="(item, index) in items" v-if="index % 2 == 0">
+            <td>{{index}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.mail}}</td>
+            <td>{{item.tel}}</td>
+        </tr>
+        <tr v-else>
+            <td>***</td>
+            <td>***非公開***</td>
+            <td>***非公開***</td>
+            <td>***非公開***</td>
+        </tr>
+    </table>
+</div>
+
+<script>
+  var data = {
+    items: [
+       {name: 'Taro',mail: 'taro@yamada.com', tel: '999-9999'},
+       {name: 'Hanako', mail: 'hanakoj@yamada.com', tel: '888-9999'},
+       {name: 'Sachiko', mail: 'sachikoy@yamada.com', tel: '777-9999'},
+       {name: 'Kojima: ', mail: 'komajirog@yamada.com', tel: '666-9999'},
+    ]
+  };
+
+  var app = new Vue({
+    el: '#app',
+    data: data
+  });
+</script>
+</body>
+</html>
