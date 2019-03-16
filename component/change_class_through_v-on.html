@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<style>
+    .red {
+        color: white;
+        background-color: red;
+    }
+</style>
+<h1>Vue.js</h1>
+<div id="app">
+    <hello />
+</div>
+
+<script>
+  const hello = Vue.component('hello',
+    {
+      data: function () {
+        return {
+          counter: 0,
+          isRed: false,
+        };
+      },
+      methods: {
+        doAction: function(event) {
+          this.counter++;
+          if (this.counter > 10) {
+            this.counter = 0;
+          }
+          if (this.counter % 2 == 0) {
+            this.isRed = false;
+          } else {
+            this.isRed = true;
+          }
+        },
+      },
+      template: '<p class="hello" v-bind:class="{red:isRed}" v-on:click="doAction();">clicked: {{counter}}</p>'
+    });
+  const app = new Vue({
+    el: '#app',
+  });
+</script>
+</body>
+</html>
